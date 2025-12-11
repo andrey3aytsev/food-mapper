@@ -1,0 +1,13 @@
+{
+  "name": "@food-mapper/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "scripts": {
+    "build": "echo 'Add your build script here'",
+    "lint": "echo 'Add your lint script here'"
+  }
+}
+

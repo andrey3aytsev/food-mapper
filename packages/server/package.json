@@ -1,0 +1,13 @@
+{
+  "name": "@food-mapper/server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'Add your dev script here'",
+    "build": "echo 'Add your build script here'",
+    "start": "echo 'Add your start script here'",
+    "lint": "echo 'Add your lint script here'"
+  }
+}
+
