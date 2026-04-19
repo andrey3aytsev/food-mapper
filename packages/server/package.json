@@ -4,13 +4,20 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "@types/node": "^22.15.3"
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.15.3",
+    "ts-node": "^10.9.2"
   },
   "scripts": {
-    "dev": "echo 'Add your dev script here'",
-    "build": "echo 'Add your build script here'",
-    "start": "echo 'Add your start script here'",
+    "dev": "node --watch --enable-source-maps --import ts-node/esm ./src/index.ts",
+    "build": "tsc --build",
+    "start": "node --enable-source-maps ./dist/index.js",
     "lint": "echo 'Add your lint script here'"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
   }
 }
-

@@ -11,5 +11,8 @@
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"],
-  "references": [{ "path": "../shared" }]
+  "references": [{ "path": "../shared" }],
+  "ts-node": {
+    "esm": true
+  }
 }
