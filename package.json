@@ -7,6 +7,7 @@
     "packages/*"
   ],
   "scripts": {
+    "typecheck": "tsc --build",
     "client": "npm run dev --workspace=packages/client",
     "server": "npm run dev --workspace=packages/server",
     "build": "npm run build --workspaces",

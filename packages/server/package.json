@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.15.3"
+  },
   "scripts": {
     "dev": "echo 'Add your dev script here'",
     "build": "echo 'Add your build script here'",
