@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc --build && vite build",
     "preview": "vite preview",
-    "lint": "echo 'Add your lint script here'"
+    "lint": "eslint ."
   },
   "dependencies": {
     "react": "^19.2.0",

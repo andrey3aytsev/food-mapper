@@ -13,7 +13,7 @@
     "dev": "node --watch --enable-source-maps --import ts-node/esm ./src/index.ts",
     "build": "tsc --build",
     "start": "node --enable-source-maps ./dist/index.js",
-    "lint": "echo 'Add your lint script here'"
+    "lint": "eslint ."
   },
   "dependencies": {
     "cors": "^2.8.6",

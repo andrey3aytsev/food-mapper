@@ -19,7 +19,6 @@
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "lint": "echo 'Add your lint script here'"
+    "lint": "eslint ."
   }
 }
-
