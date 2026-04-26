@@ -1,2 +1,1 @@
-// Shared code between client and server
-export {};
+export * from './models/index.js';
