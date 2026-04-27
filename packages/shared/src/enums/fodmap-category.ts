@@ -2,7 +2,7 @@ export const FodmapCategory = {
   Fructans: 'fructans',
   Gos: 'gos',
   Lactose: 'lactose',
-  ExcessFructose: 'excessFructose',
+  Fructose: 'fructose',
   Polyols: 'polyols',
 } as const;
 
