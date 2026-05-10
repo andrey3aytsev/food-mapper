@@ -7,17 +7,18 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^22.15.3",
+    "@types/pg": "^8.20.0",
     "node-pg-migrate": "^8.0.4",
     "ts-node": "^10.9.2"
   },
   "scripts": {
-    "dev": "node --watch --enable-source-maps --import ts-node/esm ./src/index.ts",
+    "dev": "node --watch --enable-source-maps --import dotenv/config --import ts-node/esm ./src/index.ts",
     "build": "tsc --build",
-    "start": "node --enable-source-maps ./dist/index.js",
+    "start": "node --import dotenv/config --enable-source-maps ./dist/index.js",
     "lint": "eslint .",
-    "db:migrate": "node-pg-migrate -m migrations up",
-    "db:migrate:down": "node-pg-migrate -m migrations down",
-    "db:migrate:create": "node-pg-migrate -m migrations create"
+    "db:migrate": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations up",
+    "db:migrate:down": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations down",
+    "db:migrate:create": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations create"
   },
   "dependencies": {
     "cors": "^2.8.6",
