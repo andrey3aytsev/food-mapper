@@ -2,6 +2,11 @@
 
 A web app for keeping a food diary oriented toward a low-FODMAP diet: meal logging, a FODMAP food reference, wellbeing tracking, statistics, and data export.
 
+## Requirements
+
+- **Node.js** ≥ 18
+- **npm** ≥ 9
+
 ## Packages (npm workspaces)
 
 | Package                                       | Role                                             |
