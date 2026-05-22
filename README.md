@@ -17,13 +17,17 @@ A web app for keeping a food diary oriented toward a low-FODMAP diet: meal loggi
 
 ## Root npm scripts
 
-| Command                | Description                            |
-| ---------------------- | -------------------------------------- |
-| `npm run dev`          | Client and server together             |
-| `npm run client`       | Vite dev server only (frontend)        |
-| `npm run server`       | API only in development                |
-| `npm run build`        | Build all packages                     |
-| `npm run lint`         | Lint all packages                      |
-| `npm run typecheck`    | Typecheck                              |
-| `npm run format`       | Format with Prettier                   |
-| `npm run format:check` | Check formatting without writing files |
+| Command                     | Description                            |
+| --------------------------- | -------------------------------------- |
+| `npm run dev`               | Client and server together             |
+| `npm run typecheck`         | Typecheck all packages                 |
+| `npm run client`            | Vite dev server only (frontend)        |
+| `npm run server`            | API only in development                |
+| `npm run db:migrate`        | Apply pending database migrations      |
+| `npm run db:migrate:down`   | Roll back the last migration           |
+| `npm run db:migrate:create` | Create a new migration file            |
+| `npm run db:seed`           | Seed food reference data               |
+| `npm run build`             | Build all packages                     |
+| `npm run lint`              | Lint all packages                      |
+| `npm run format`            | Format with Prettier                   |
+| `npm run format:check`      | Check formatting without writing files |

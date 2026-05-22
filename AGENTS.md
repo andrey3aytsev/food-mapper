@@ -1,17 +1,21 @@
-# Food Mapper — agent context
+# Food Mapper
 
 ## Overview
 
 - Monorepo using **npm workspaces**.
 - Packages, engine versions, and root npm scripts: **[README.md](README.md)**.
 
-## Verification
+## Before committing
 
-Run from the root **before committing**:
+Run from the root:
 
 - `npm run lint`
 - `npm run typecheck`
 - If client code is affected: `npm run build` (builds all workspaces)
+
+If you changed root scripts or `engines` in `package.json`:
+
+- Update the matching sections in **[README.md](README.md)**.
 
 ## Database
 
