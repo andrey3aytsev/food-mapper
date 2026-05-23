@@ -14,7 +14,7 @@
     "db:migrate": "npm run db:migrate --workspace=packages/server",
     "db:migrate:down": "npm run db:migrate:down --workspace=packages/server",
     "db:migrate:create": "npm run db:migrate:create --workspace=packages/server",
-    "build": "npm run build --workspaces",
+    "build": "npm run build --workspace=@food-mapper/shared && npm run build --workspace=@food-mapper/server && npm run build --workspace=@food-mapper/client",
     "lint": "npm run lint --workspaces",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
