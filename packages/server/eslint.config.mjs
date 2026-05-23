@@ -1,3 +1,6 @@
-import { createTypeScriptBase } from '../../eslint.shared.mjs';
+import {
+  createSharedImportRestrictions,
+  createTypeScriptBase,
+} from '../../eslint.shared.mjs';
 
-export default createTypeScriptBase();
+export default [...createTypeScriptBase(), createSharedImportRestrictions()];

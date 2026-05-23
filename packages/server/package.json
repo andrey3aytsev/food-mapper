@@ -22,6 +22,7 @@
     "db:seed": "node --import dotenv/config --import ts-node/esm ./src/seed/seed-food-references.ts"
   },
   "dependencies": {
+    "@food-mapper/shared": "*",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",

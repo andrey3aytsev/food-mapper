@@ -1,9 +1,13 @@
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-import { createTypeScriptBase } from '../../eslint.shared.mjs';
+import {
+  createSharedImportRestrictions,
+  createTypeScriptBase,
+} from '../../eslint.shared.mjs';
 
 export default [
   ...createTypeScriptBase(),
+  createSharedImportRestrictions(),
   {
     settings: {
       react: {

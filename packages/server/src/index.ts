@@ -1,5 +1,6 @@
 import 'dotenv/config';
 
+import type {} from '@food-mapper/shared';
 import cors from 'cors';
 import express from 'express';
 
