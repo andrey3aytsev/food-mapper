@@ -18,8 +18,7 @@
     "lint": "eslint .",
     "db:migrate": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations up",
     "db:migrate:down": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations down",
-    "db:migrate:create": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations create",
-    "db:seed": "node --import dotenv/config --import ts-node/esm ./src/seed/seed-food-references.ts"
+    "db:migrate:create": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations create"
   },
   "dependencies": {
     "@food-mapper/shared": "*",

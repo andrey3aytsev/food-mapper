@@ -26,7 +26,6 @@ A web app for keeping a food diary oriented toward a low-FODMAP diet: meal loggi
 | `npm run db:migrate`        | Apply pending database migrations      |
 | `npm run db:migrate:down`   | Roll back the last migration           |
 | `npm run db:migrate:create` | Create a new migration file            |
-| `npm run db:seed`           | Seed food reference data               |
 | `npm run build`             | Build all packages                     |
 | `npm run lint`              | Lint all packages                      |
 | `npm run format`            | Format with Prettier                   |

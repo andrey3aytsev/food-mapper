@@ -21,7 +21,7 @@ If you changed root scripts or `engines` in `package.json`:
 
 - **PostgreSQL** via `docker-compose.yml`.
 - Copy `packages/server/.env.example` → `packages/server/.env`.
-- Migrations and seed: `npm run db:migrate`, `npm run db:seed` (from the root).
+- Migrations: `npm run db:migrate` (from the root).
 
 ## Tests
 

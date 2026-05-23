@@ -14,7 +14,6 @@
     "db:migrate": "npm run db:migrate --workspace=packages/server",
     "db:migrate:down": "npm run db:migrate:down --workspace=packages/server",
     "db:migrate:create": "npm run db:migrate:create --workspace=packages/server",
-    "db:seed": "npm run db:seed --workspace=packages/server",
     "build": "npm run build --workspaces",
     "lint": "npm run lint --workspaces",
     "format": "prettier --write .",
