@@ -1,1 +1,1 @@
-export {};
+export { MealType } from './meal-type.js';
