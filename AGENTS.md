@@ -9,6 +9,7 @@
 
 Run from the root:
 
+- `npm run format`
 - `npm run lint`
 - `npm run typecheck`
 - If client code is affected: `npm run build` (builds all workspaces)
