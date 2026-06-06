@@ -1,11 +1,17 @@
+export type { Catalog } from './catalog.js';
+export type { CatalogItem } from './catalog-item.js';
 export type { CatalogSnapshot } from './catalog-snapshot.js';
 export type { Day } from './day.js';
 export type { DailyGoals } from './daily-goals.js';
+export type { GroupInsight } from './group-insight.js';
 export type { Meal } from './meal.js';
 export type { MealEntry } from './meal-entry.js';
 export type { Nutrients } from './nutrients.js';
 export type { Portion } from './portion.js';
+export type { ProductInsight } from './product-insight.js';
+export type { ProductRiskRating } from './product-risk-rating.js';
 export type { Symptom } from './symptom.js';
 export type { User } from './user.js';
 export type { UserProduct } from './user-product.js';
 export type { UserSettings } from './user-settings.js';
+export type { WellnessCheck } from './wellness-check.js';
