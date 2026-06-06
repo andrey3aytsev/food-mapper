@@ -4,5 +4,3 @@ export type Nutrients = {
   fat?: number;
   carbs?: number;
 };
-
-export type NutrientsField = keyof Nutrients;

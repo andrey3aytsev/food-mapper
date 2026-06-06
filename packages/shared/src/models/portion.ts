@@ -3,5 +3,3 @@ export type Portion = {
   unit?: string;
   label?: string;
 };
-
-export type PortionField = keyof Portion;

@@ -1,5 +1,11 @@
-export type { DailyGoals, DailyGoalsField } from './daily-goals.js';
-export type { Nutrients, NutrientsField } from './nutrients.js';
-export type { Portion, PortionField } from './portion.js';
-export type { User, UserField } from './user.js';
-export type { UserSettings, UserSettingsField } from './user-settings.js';
+export type { CatalogSnapshot } from './catalog-snapshot.js';
+export type { Day } from './day.js';
+export type { DailyGoals } from './daily-goals.js';
+export type { Meal } from './meal.js';
+export type { MealEntry } from './meal-entry.js';
+export type { Nutrients } from './nutrients.js';
+export type { Portion } from './portion.js';
+export type { Symptom } from './symptom.js';
+export type { User } from './user.js';
+export type { UserProduct } from './user-product.js';
+export type { UserSettings } from './user-settings.js';

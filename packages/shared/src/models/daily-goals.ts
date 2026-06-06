@@ -4,5 +4,3 @@ export type DailyGoals = {
   fat?: number;
   carbs?: number;
 };
-
-export type DailyGoalsField = keyof DailyGoals;

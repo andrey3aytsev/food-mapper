@@ -5,5 +5,3 @@ export type UserSettings = {
   dailyGoals?: DailyGoals;
   updatedAt: string;
 };
-
-export type UserSettingsField = keyof UserSettings;
