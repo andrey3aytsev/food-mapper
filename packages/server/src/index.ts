@@ -5,6 +5,7 @@ import cors from 'cors';
 import express from 'express';
 
 import { checkDbConnection, pool } from './db.js';
+import { healthRouter } from './routes/index.js';
 
 const app = express();
 const port = Number(process.env.PORT ?? 3000);
@@ -16,18 +17,7 @@ if (!Number.isFinite(port) || port < 1) {
 app.use(cors());
 app.use(express.json());
 
-app.get('/health', (_req, res) => {
-  res.json({ ok: true });
-});
-
-app.get('/health/db', async (_req, res) => {
-  try {
-    await checkDbConnection();
-    res.json({ ok: true });
-  } catch {
-    res.status(503).json({ ok: false, error: 'database_unreachable' });
-  }
-});
+app.use(healthRouter);
 
 const shutdown = async (): Promise<void> => {
   await pool.end();
