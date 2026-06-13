@@ -5,6 +5,7 @@ import cors from 'cors';
 import express from 'express';
 
 import { checkDbConnection, pool } from './db.js';
+import { errorHandler, notFoundHandler } from './middleware/index.js';
 import { healthRouter } from './routes/index.js';
 
 const app = express();
@@ -18,6 +19,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use(healthRouter);
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 const shutdown = async (): Promise<void> => {
   await pool.end();
