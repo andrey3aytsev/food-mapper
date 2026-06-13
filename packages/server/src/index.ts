@@ -5,8 +5,13 @@ import cors from 'cors';
 import express from 'express';
 
 import { checkDbConnection, pool } from './db.js';
-import { errorHandler, notFoundHandler } from './middleware/index.js';
+import {
+  errorHandler,
+  notFoundHandler,
+  requireAuth,
+} from './middleware/index.js';
 import { healthRouter } from './routes/index.js';
+import './types/index.js';
 
 const app = express();
 const port = Number(process.env.PORT ?? 3000);
@@ -17,6 +22,7 @@ if (!Number.isFinite(port) || port < 1) {
 
 app.use(cors());
 app.use(express.json());
+app.use(requireAuth);
 
 app.use(healthRouter);
 

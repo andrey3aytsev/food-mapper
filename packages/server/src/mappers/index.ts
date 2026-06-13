@@ -5,4 +5,4 @@ export {
   toRow as userToRow,
   type UserPersistInput,
   type UserRow,
-} from './user.mapper.js';
+} from './user.js';

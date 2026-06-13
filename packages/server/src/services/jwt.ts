@@ -1,0 +1,30 @@
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET environment variable is required');
+}
+
+export const JWT_EXPIRES_IN = '7d';
+
+export type JwtPayload = {
+  sub: string;
+};
+
+export const signToken = (userId: string): string =>
+  jwt.sign({ sub: userId }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
+
+export const verifyToken = (token: string): JwtPayload => {
+  const payload = jwt.verify(token, JWT_SECRET);
+
+  if (
+    typeof payload !== 'object' ||
+    payload === null ||
+    typeof payload.sub !== 'string'
+  ) {
+    throw new Error('Invalid token payload');
+  }
+
+  return { sub: payload.sub };
+};

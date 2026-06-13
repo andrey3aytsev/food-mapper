@@ -12,4 +12,5 @@ export type LoginRequest = {
 
 export type AuthResponse = {
   user: User;
+  token: string;
 };
