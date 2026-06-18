@@ -4,4 +4,5 @@ export const WellnessCheckType = {
   Quick: 'quick',
 } as const;
 
-export type WellnessCheckType = (typeof WellnessCheckType)[keyof typeof WellnessCheckType];
+export type WellnessCheckType =
+  (typeof WellnessCheckType)[keyof typeof WellnessCheckType];

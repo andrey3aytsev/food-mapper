@@ -4,4 +4,5 @@ export const MealEntrySource = {
   MyProduct: 'myProduct',
 } as const;
 
-export type MealEntrySource = (typeof MealEntrySource)[keyof typeof MealEntrySource];
+export type MealEntrySource =
+  (typeof MealEntrySource)[keyof typeof MealEntrySource];
