@@ -18,3 +18,16 @@ export const createUser = async (input: CreateUserInput): Promise<User> => {
 
   return userFromRow(result.rows[0]);
 };
+
+export const findUserByEmail = async (
+  email: string,
+): Promise<UserRow | null> => {
+  const result = await pool.query<UserRow>(
+    `select id, email, password_hash, created_at
+     from users
+     where email = $1`,
+    [email],
+  );
+
+  return result.rows[0] ?? null;
+};

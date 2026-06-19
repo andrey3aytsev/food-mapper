@@ -1,21 +1,31 @@
-import type { AuthResponse, RegisterRequest } from '@food-mapper/shared';
+import type {
+  AuthResponse,
+  LoginRequest,
+  RegisterRequest,
+} from '@food-mapper/shared';
 import type { DatabaseError } from 'pg';
 
 import { HttpError } from '../errors/index.js';
-import { createUser } from '../repositories/user.js';
-import { hashPassword } from './password.js';
+import { userFromRow } from '../mappers/index.js';
+import { createUser, findUserByEmail } from '../repositories/user.js';
+import { hashPassword, verifyLoginPassword } from './password.js';
 import { signToken } from './jwt.js';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_PASSWORD_LENGTH = 8;
 
-const isUniqueViolation = (err: unknown): err is DatabaseError =>
-  typeof err === 'object' &&
-  err !== null &&
-  'code' in err &&
-  err.code === '23505';
+const isUniqueViolation = (err: unknown): err is DatabaseError => {
+  return (
+    typeof err === 'object' &&
+    err !== null &&
+    'code' in err &&
+    err.code === '23505'
+  );
+};
 
-const parseRegisterRequest = (body: unknown): RegisterRequest => {
+const parseAuthRequestBody = (
+  body: unknown,
+): RegisterRequest | LoginRequest => {
   if (typeof body !== 'object' || body === null) {
     throw new HttpError(
       400,
@@ -45,7 +55,13 @@ const parseRegisterRequest = (body: unknown): RegisterRequest => {
     throw new HttpError(400, 'invalid_request', 'Password is required');
   }
 
-  if (normalizedPassword.length < MIN_PASSWORD_LENGTH) {
+  return { email: normalizedEmail, password: normalizedPassword };
+};
+
+const parseRegisterRequest = (body: unknown): RegisterRequest => {
+  const { email, password } = parseAuthRequestBody(body);
+
+  if (password.length < MIN_PASSWORD_LENGTH) {
     throw new HttpError(
       400,
       'invalid_request',
@@ -53,7 +69,11 @@ const parseRegisterRequest = (body: unknown): RegisterRequest => {
     );
   }
 
-  return { email: normalizedEmail, password: normalizedPassword };
+  return { email, password };
+};
+
+const parseLoginRequest = (body: unknown): LoginRequest => {
+  return parseAuthRequestBody(body);
 };
 
 export const register = async (body: unknown): Promise<AuthResponse> => {
@@ -73,4 +93,24 @@ export const register = async (body: unknown): Promise<AuthResponse> => {
 
     throw err;
   }
+};
+
+export const login = async (body: unknown): Promise<AuthResponse> => {
+  const { email, password } = parseLoginRequest(body);
+
+  const row = await findUserByEmail(email);
+  const passwordValid = await verifyLoginPassword(password, row?.password_hash);
+
+  if (row === null || !passwordValid) {
+    throw new HttpError(
+      401,
+      'invalid_credentials',
+      'Invalid email or password',
+    );
+  }
+
+  const user = userFromRow(row);
+  const token = signToken(user.id);
+
+  return { user, token };
 };

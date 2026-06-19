@@ -39,6 +39,11 @@ export function createTypeScriptBase() {
     },
     eslint.configs.recommended,
     ...tseslint.configs.recommended,
+    {
+      rules: {
+        'arrow-body-style': ['error', 'always'],
+      },
+    },
     eslintConfigPrettier,
   );
 }

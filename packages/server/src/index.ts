@@ -46,12 +46,18 @@ const main = async (): Promise<void> => {
     console.info(`Received ${signal}, closing...`);
 
     server.close(() => {
-      void shutdown().finally(() => process.exit(0));
+      void shutdown().finally(() => {
+        return process.exit(0);
+      });
     });
   };
 
-  process.once('SIGINT', () => onSignal('SIGINT'));
-  process.once('SIGTERM', () => onSignal('SIGTERM'));
+  process.once('SIGINT', () => {
+    return onSignal('SIGINT');
+  });
+  process.once('SIGTERM', () => {
+    return onSignal('SIGTERM');
+  });
 };
 
 void main().catch(async (err) => {

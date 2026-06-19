@@ -12,8 +12,9 @@ export type JwtPayload = {
   sub: string;
 };
 
-export const signToken = (userId: string): string =>
-  jwt.sign({ sub: userId }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
+export const signToken = (userId: string): string => {
+  return jwt.sign({ sub: userId }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
+};
 
 export const verifyToken = (token: string): JwtPayload => {
   const payload = jwt.verify(token, JWT_SECRET);
