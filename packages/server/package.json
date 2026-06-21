@@ -18,6 +18,8 @@
     "build": "tsc --build",
     "start": "node --import dotenv/config --enable-source-maps ./dist/index.js",
     "lint": "eslint .",
+    "test": "vitest run",
+    "test:dev": "vitest",
     "db:migrate": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations up",
     "db:migrate:down": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations down",
     "db:migrate:create": "node --import dotenv/config ../../node_modules/node-pg-migrate/bin/node-pg-migrate.js -m migrations create"

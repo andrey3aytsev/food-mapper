@@ -12,6 +12,7 @@ Run from the root:
 - `npm run format`
 - `npm run lint`
 - `npm run typecheck`
+- `npm run test`
 - If client code is affected: `npm run build` (builds all workspaces)
 
 If you changed root scripts or `engines` in `package.json`:
@@ -26,5 +27,4 @@ If you changed root scripts or `engines` in `package.json`:
 
 ## Tests
 
-- No root `test` script.
-- Use lint and TypeScript build for checks.
+- Unit tests: `npm run test` (Vitest).

@@ -30,3 +30,5 @@ A web app for keeping a food diary oriented toward a low-FODMAP diet: meal loggi
 | `npm run lint`              | Lint all packages                      |
 | `npm run format`            | Format with Prettier                   |
 | `npm run format:check`      | Check formatting without writing files |
+| `npm run test`              | Run unit tests once                    |
+| `npm run test:dev`          | Run unit tests in watch mode           |

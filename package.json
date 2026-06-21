@@ -17,7 +17,9 @@
     "build": "npm run build --workspace=@food-mapper/shared && npm run build --workspace=@food-mapper/server && npm run build --workspace=@food-mapper/client",
     "lint": "npm run lint --workspaces",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:dev": "vitest"
   },
   "engines": {
     "node": ">=18.0.0",
@@ -32,6 +34,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "prettier": "^3.8.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.58.2"
+    "typescript-eslint": "^8.58.2",
+    "vitest": "^4.1.9"
   }
 }
