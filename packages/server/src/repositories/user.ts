@@ -19,6 +19,18 @@ export const createUser = async (input: CreateUserInput): Promise<User> => {
   return userFromRow(result.rows[0]);
 };
 
+export const findUserById = async (id: string): Promise<User | null> => {
+  const result = await pool.query<UserRow>(
+    `select id, email, created_at
+     from users
+     where id = $1`,
+    [id],
+  );
+
+  const row = result.rows[0];
+  return row ? userFromRow(row) : null;
+};
+
 export const findUserByEmail = async (
   email: string,
 ): Promise<UserRow | null> => {

@@ -2,12 +2,17 @@ import type {
   AuthResponse,
   LoginRequest,
   RegisterRequest,
+  User,
 } from '@food-mapper/shared';
 import type { DatabaseError } from 'pg';
 
 import { HttpError } from '../errors/index.js';
 import { userFromRow } from '../mappers/index.js';
-import { createUser, findUserByEmail } from '../repositories/user.js';
+import {
+  createUser,
+  findUserByEmail,
+  findUserById,
+} from '../repositories/user.js';
 import { hashPassword, verifyLoginPassword } from './password.js';
 import { signToken } from './jwt.js';
 
@@ -113,4 +118,14 @@ export const login = async (body: unknown): Promise<AuthResponse> => {
   const token = signToken(user.id);
 
   return { user, token };
+};
+
+export const getCurrentUser = async (userId: string): Promise<User> => {
+  const user = await findUserById(userId);
+
+  if (user === null) {
+    throw new HttpError(401, 'unauthorized', 'Invalid or expired token');
+  }
+
+  return user;
 };

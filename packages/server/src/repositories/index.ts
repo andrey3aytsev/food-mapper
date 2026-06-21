@@ -1,1 +1,6 @@
-export { createUser, findUserByEmail, type CreateUserInput } from './user.js';
+export {
+  createUser,
+  findUserByEmail,
+  findUserById,
+  type CreateUserInput,
+} from './user.js';
