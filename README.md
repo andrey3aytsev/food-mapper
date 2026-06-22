@@ -4,7 +4,7 @@ A web app for keeping a food diary oriented toward a low-FODMAP diet: meal loggi
 
 ## Requirements
 
-- **Node.js** ≥ 18
+- **Node.js** ≥ 20
 - **npm** ≥ 9
 
 ## Packages (npm workspaces)
