@@ -20,5 +20,8 @@
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "lint": "eslint ."
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
   }
 }

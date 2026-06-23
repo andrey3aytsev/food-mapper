@@ -1,12 +1,13 @@
-import type {
-  AuthResponse,
-  LoginRequest,
-  RegisterRequest,
-  User,
+import {
+  loginRequestSchema,
+  registerRequestSchema,
+  type AuthResponse,
+  type User,
 } from '@food-mapper/shared';
 import type { DatabaseError } from 'pg';
 
 import { HttpError } from '../errors/index.js';
+import { parseRequest } from '../validation/index.js';
 import { userFromRow } from '../mappers/index.js';
 import {
   createUser,
@@ -15,9 +16,6 @@ import {
 } from '../repositories/user.js';
 import { hashPassword, verifyLoginPassword } from './password.js';
 import { signToken } from './jwt.js';
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MIN_PASSWORD_LENGTH = 8;
 
 const isUniqueViolation = (err: unknown): err is DatabaseError => {
   return (
@@ -28,61 +26,8 @@ const isUniqueViolation = (err: unknown): err is DatabaseError => {
   );
 };
 
-const parseAuthRequestBody = (
-  body: unknown,
-): RegisterRequest | LoginRequest => {
-  if (typeof body !== 'object' || body === null) {
-    throw new HttpError(
-      400,
-      'invalid_request',
-      'Request body must be a JSON object',
-    );
-  }
-
-  const { email, password } = body as Record<string, unknown>;
-
-  if (typeof email !== 'string' || email.trim() === '') {
-    throw new HttpError(400, 'invalid_request', 'Email is required');
-  }
-
-  if (typeof password !== 'string') {
-    throw new HttpError(400, 'invalid_request', 'Password is required');
-  }
-
-  const normalizedEmail = email.trim().toLowerCase();
-  const normalizedPassword = password.trim();
-
-  if (!EMAIL_PATTERN.test(normalizedEmail)) {
-    throw new HttpError(400, 'invalid_request', 'Invalid email format');
-  }
-
-  if (normalizedPassword === '') {
-    throw new HttpError(400, 'invalid_request', 'Password is required');
-  }
-
-  return { email: normalizedEmail, password: normalizedPassword };
-};
-
-const parseRegisterRequest = (body: unknown): RegisterRequest => {
-  const { email, password } = parseAuthRequestBody(body);
-
-  if (password.length < MIN_PASSWORD_LENGTH) {
-    throw new HttpError(
-      400,
-      'invalid_request',
-      `Password must be at least ${MIN_PASSWORD_LENGTH} characters`,
-    );
-  }
-
-  return { email, password };
-};
-
-const parseLoginRequest = (body: unknown): LoginRequest => {
-  return parseAuthRequestBody(body);
-};
-
 export const register = async (body: unknown): Promise<AuthResponse> => {
-  const { email, password } = parseRegisterRequest(body);
+  const { email, password } = parseRequest(registerRequestSchema, body);
 
   const passwordHash = await hashPassword(password);
 
@@ -101,7 +46,7 @@ export const register = async (body: unknown): Promise<AuthResponse> => {
 };
 
 export const login = async (body: unknown): Promise<AuthResponse> => {
-  const { email, password } = parseLoginRequest(body);
+  const { email, password } = parseRequest(loginRequestSchema, body);
 
   const row = await findUserByEmail(email);
   const passwordValid = await verifyLoginPassword(password, row?.password_hash);
