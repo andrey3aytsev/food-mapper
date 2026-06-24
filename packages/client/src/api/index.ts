@@ -1,4 +1,5 @@
 export { ApiError } from './api-error.js';
+export { getApiErrorMessage } from './get-api-error-message.js';
 export {
   clearAuthSession,
   getMe,
