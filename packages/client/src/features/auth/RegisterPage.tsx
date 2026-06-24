@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { ROUTES } from '../../routes/paths';
 
-export function RegisterPage() {
+export const RegisterPage = () => {
   return (
     <main>
       <h1>Sign up</h1>
@@ -11,4 +11,4 @@ export function RegisterPage() {
       </p>
     </main>
   );
-}
+};

@@ -42,6 +42,7 @@ export function createTypeScriptBase() {
     {
       rules: {
         'arrow-body-style': ['error', 'always'],
+        'func-style': ['error', 'expression'],
       },
     },
     eslintConfigPrettier,

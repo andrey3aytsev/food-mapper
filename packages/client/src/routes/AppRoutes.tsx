@@ -5,7 +5,7 @@ import { RegisterPage } from '../features/auth/RegisterPage';
 import { ProfilePage } from '../features/profile/ProfilePage';
 import { ROUTES } from './paths';
 
-export function AppRoutes() {
+export const AppRoutes = () => {
   return (
     <Routes>
       <Route path={ROUTES.login} element={<LoginPage />} />
@@ -15,4 +15,4 @@ export function AppRoutes() {
       <Route path="*" element={<Navigate to={ROUTES.login} replace />} />
     </Routes>
   );
-}
+};

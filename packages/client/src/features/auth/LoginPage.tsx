@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { ROUTES } from '../../routes/paths';
 
-export function LoginPage() {
+export const LoginPage = () => {
   return (
     <main>
       <h1>Log in</h1>
@@ -11,4 +11,4 @@ export function LoginPage() {
       </p>
     </main>
   );
-}
+};
