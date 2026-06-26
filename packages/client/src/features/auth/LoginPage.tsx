@@ -32,8 +32,9 @@ export const LoginPage = () => {
   const isSubmitting = loginMutation.isPending;
 
   const handleSubmit = form.onSubmit((values) => {
+    const { email, password } = loginFormSchema.parse(values);
     loginMutation.reset();
-    loginMutation.mutate(values);
+    loginMutation.mutate({ email, password });
   });
 
   return (

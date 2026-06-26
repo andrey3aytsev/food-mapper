@@ -5,7 +5,10 @@ export const loginFormSchema = loginRequestSchema;
 
 export const registerFormSchema = registerRequestSchema
   .extend({
-    confirmPassword: z.string().min(1, 'Please confirm your password'),
+    confirmPassword: z
+      .string()
+      .trim()
+      .min(1, 'Please confirm your password'),
   })
   .refine(
     (data) => {
