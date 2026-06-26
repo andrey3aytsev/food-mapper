@@ -1,6 +1,8 @@
 # Food Mapper
 
-A web app for keeping a food diary oriented toward a low-FODMAP diet: meal logging, a FODMAP food reference, wellbeing tracking, statistics, and data export.
+A web app for food logging and symptom tracking.
+Log meals, note how you feel, and surface hypotheses about
+foods and symptoms.
 
 ## Requirements
 

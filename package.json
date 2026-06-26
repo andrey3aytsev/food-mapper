@@ -2,7 +2,7 @@
   "name": "food-mapper",
   "version": "0.0.0",
   "private": true,
-  "description": "Application for managing FODMAP diet",
+  "description": "Web app for food logging, symptom tracking, and surfacing food-symptom hypotheses",
   "workspaces": [
     "packages/*"
   ],
