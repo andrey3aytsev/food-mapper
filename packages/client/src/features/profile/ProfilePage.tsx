@@ -1,14 +1,31 @@
-import { Link } from 'react-router-dom';
+import { Alert, Container, Loader, Stack, Text, Title } from '@mantine/core';
 
-import { ROUTES } from '../../routes/paths';
+import { getApiErrorMessage } from '../../api/get-api-error-message';
+import { useMe } from '../auth/use-me';
 
 export const ProfilePage = () => {
+  const meQuery = useMe();
+  const errorMessage = getApiErrorMessage(meQuery.error);
+
   return (
-    <main>
-      <h1>Profile</h1>
-      <p>
-        <Link to={ROUTES.login}>Log out</Link>
-      </p>
-    </main>
+    <Container size="xs" py="xl">
+      <Stack gap="md">
+        <Title order={1}>Profile</Title>
+
+        {meQuery.isLoading ? <Loader size="sm" /> : null}
+
+        {errorMessage !== null ? (
+          <Alert color="red" title="Could not load profile">
+            {errorMessage}
+          </Alert>
+        ) : null}
+
+        {meQuery.data !== undefined ? (
+          <Text>
+            Signed in as <strong>{meQuery.data.email}</strong>
+          </Text>
+        ) : null}
+      </Stack>
+    </Container>
   );
 };
