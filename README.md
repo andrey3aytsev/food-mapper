@@ -34,3 +34,13 @@ foods and symptoms.
 | `npm run format:check`      | Check formatting without writing files |
 | `npm run test`              | Run unit tests once                    |
 | `npm run test:dev`          | Run unit tests in watch mode           |
+
+## Getting started
+
+```bash
+npm install
+docker compose up -d
+cp packages/server/.env.example packages/server/.env
+npm run db:migrate
+npm run dev
+```
