@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc --build && vite build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:dev": "vitest"
   },
   "dependencies": {
     "@food-mapper/shared": "*",
