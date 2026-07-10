@@ -34,6 +34,7 @@ foods and symptoms.
 | `npm run format:check`      | Check formatting without writing files |
 | `npm run test`              | Run unit tests once                    |
 | `npm run test:dev`          | Run unit tests in watch mode           |
+| `npm run test:coverage`     | Run unit tests with coverage report    |
 
 ## Getting started
 
