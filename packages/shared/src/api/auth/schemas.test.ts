@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { loginRequestSchema, registerRequestSchema } from './auth-schemas.js';
+import { loginRequestSchema, registerRequestSchema } from './schemas.js';
 
 describe('loginRequestSchema', () => {
   it('normalizes email and password with surrounding whitespace', () => {

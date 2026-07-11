@@ -1,9 +1,4 @@
-export type { AuthResponse } from './auth.js';
-export type { LoginRequest, RegisterRequest } from './auth-schemas.js';
-export {
-  loginRequestSchema,
-  MIN_PASSWORD_LENGTH,
-  registerRequestSchema,
-} from './auth-schemas.js';
 export type { ApiErrorResponse } from './error.js';
-export { authApiPaths } from './paths.js';
+export * from './auth/index.js';
+export * from './settings/index.js';
+export * from './symptoms/index.js';
