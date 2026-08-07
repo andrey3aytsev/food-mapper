@@ -8,3 +8,4 @@ export {
   createSymptomRequestSchema,
   patchSymptomRequestSchema,
 } from './schemas.js';
+export { symptomByIdPath, symptomsApiPaths } from './paths.js';
