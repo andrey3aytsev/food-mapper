@@ -1,6 +1,6 @@
 import type { User } from '@food-mapper/shared';
 
-import { pool } from '../db.js';
+import { pool, type Queryable } from '../db.js';
 import { userFromRow, type UserRow } from '../mappers/index.js';
 
 export type CreateUserInput = {
@@ -8,8 +8,11 @@ export type CreateUserInput = {
   passwordHash: string;
 };
 
-export const createUser = async (input: CreateUserInput): Promise<User> => {
-  const result = await pool.query<UserRow>(
+export const createUser = async (
+  input: CreateUserInput,
+  queryable: Queryable = pool,
+): Promise<User> => {
+  const result = await queryable.query<UserRow>(
     `insert into users (email, password_hash)
      values ($1, $2)
      returning id, email, created_at`,

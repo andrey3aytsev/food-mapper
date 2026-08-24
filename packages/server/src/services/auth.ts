@@ -9,11 +9,13 @@ import type { DatabaseError } from 'pg';
 import { HttpError } from '../errors/index.js';
 import { parseRequest } from '../validation/index.js';
 import { userFromRow } from '../mappers/index.js';
+import { withTransaction } from '../db.js';
 import {
   createUser,
   findUserByEmail,
   findUserById,
 } from '../repositories/user.js';
+import { createDefaultUserSettings } from '../repositories/user-settings.js';
 import { hashPassword, verifyLoginPassword } from './password.js';
 import { signToken } from './jwt.js';
 
@@ -32,7 +34,11 @@ export const register = async (body: unknown): Promise<AuthResponse> => {
   const passwordHash = await hashPassword(password);
 
   try {
-    const user = await createUser({ email, passwordHash });
+    const user = await withTransaction(async (client) => {
+      const createdUser = await createUser({ email, passwordHash }, client);
+      await createDefaultUserSettings(createdUser.id, client);
+      return createdUser;
+    });
     const token = signToken(user.id);
 
     return { user, token };
@@ -60,6 +66,7 @@ export const login = async (body: unknown): Promise<AuthResponse> => {
   }
 
   const user = userFromRow(row);
+  await createDefaultUserSettings(user.id);
   const token = signToken(user.id);
 
   return { user, token };
