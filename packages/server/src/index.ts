@@ -10,7 +10,12 @@ import {
   notFoundHandler,
   requireAuth,
 } from './middleware/index.js';
-import { authRouter, healthRouter, meRouter } from './routes/index.js';
+import {
+  authRouter,
+  healthRouter,
+  meRouter,
+  symptomsRouter,
+} from './routes/index.js';
 import './types/index.js';
 
 const app = express();
@@ -27,6 +32,7 @@ app.use(requireAuth);
 app.use(healthRouter);
 app.use(authRouter);
 app.use(meRouter);
+app.use(symptomsRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);

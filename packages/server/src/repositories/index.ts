@@ -1,4 +1,9 @@
 export {
+  createSymptom,
+  findSymptomsByUserId,
+  type CreateSymptomInput,
+} from './symptoms.js';
+export {
   createUser,
   findUserByEmail,
   findUserById,
